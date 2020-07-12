@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<div th:insert="fragments.html :: head"></div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu">
+		</div>		
+		
+	</header>
+	<main>
+		<h2>
+			<span th:text="#{navigation.newjob}">Add A Job</span>
+		</h2>
+		<form method="post" th:action="@{/add-job}" th:object="${addJobForm}">
+	  		<label><span th:text="#{addjob.jobName}">Job Name</span></label> 
+	  		<input type="text" th:field="*{jobName}"><p class="error"><span class="error" th:if="${#fields.hasErrors('*{jobName}')}" th:errors="*{jobName}" >Error</span></p>
+	   		<label><span th:text="#{addjob.jobDescription}">Job Description</span></label> 
+	  		<input type="text" th:field="*{jobDescription}">
+	  		<!-- <textarea rows="4" cols="50" name="comment" form="addJobform"><span th:text="#{addjob.jobDescription}">Job Description</span>Enter text here...</textarea> -->
+	  		<p class="error"><span class="error" th:if="${#fields.hasErrors('*{jobDescription}')}" th:errors="*{jobDescription}" >Error</span></p>
+	  		
+			<input class="reset" type="reset" th:value="#{addJob.reset}">
+	  		<input class="submit" type="submit" th:value="#{addJob.submit}">
+	  	</form> 
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<div th:insert="fragments.html :: head"></div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu">
+		</div>		
+	</header>
+	<main>
+		<h2><span th:text="#{register.register}">REGISTER</span></h2>
+		 <form method="post" th:action="@{/register}" th:object="${registerForm}">
+			  <label><span th:text="#{register.name}">Name:</span></label> 
+			  <input type="text" th:field="*{userName}"/><p class="error"><span  th:if="${#fields.hasErrors('*{userName}')}" th:errors="*{userName}" >Error</span></p>
+			  <label><span th:text="#{register.email}">Email:</span></label> 
+			  <input type="email" th:field="*{userEmail}"><p class="error"><span class="error" th:if="${#fields.hasErrors('*{userEmail}')}" th:errors="*{userEmail}" >Error</span></p>
+			  <label><span th:text="#{register.phone}">Phone:</span></label> 
+			  <input type="tel"  th:field="*{userPhone}"><p class="error"><span class="error" th:if="${#fields.hasErrors('*{userPhone}')}" th:errors="*{userPhone}" >Error</span></p>
+			  <label><span th:text="#{register.password}">Password:</span></label> 
+			  <input type="password" th:field="*{userPassword}"><p class="error"><span class="error" th:if="${#fields.hasErrors('*{userPassword}')}" th:errors="*{userPassword}" >Error</span></p>
+			
+			  <input class="reset" type="reset" th:value="#{register.reset}">
+			  <input class="submit" type="submit" th:value="#{register.submit}">
+		</form> 
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>

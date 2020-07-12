@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>List of bids</h2>
+<!-- <span th:text="${#arrays.length(bids)}"></span> -->
+	 <span th:if="${#arrays.length(bids) > 0}">
+		<table style="border: 1px solid black;">
+			<tr>
+				<td>bidder</td>
+				<td>offers</td>
+		 	<tr style="background-color: #eee;" th:each="bid,iterationCount : ${bids}" th:object="${bid}">			
+				<td th:text="${bid.addedBy.userName}"> </td>
+				<td th:text="*{bidPrice}"> </td>
+			</tr>
+		</table>
+	 </span>
+	  <span th:unless="${#arrays.length(bids) > 0}">This Job Has No Bids!!<br></span>
+	<a th:href="@{/}">Back To All jobs </a>
+</body>
+</html>

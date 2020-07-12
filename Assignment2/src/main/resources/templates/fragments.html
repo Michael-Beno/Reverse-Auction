@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:fragment="head">
+  	<link rel="stylesheet" th:href="@{/styles/mystyles.css}" type="text/css" />
+	<link rel="stylesheet" th:href="@{/styles/flag-icon.css}" type="text/css" />
+	<title th:text="#{fragment.pagename}">Job Auction Pages</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	
+    <div th:fragment="menu">
+		<nav>
+	        <a th:href="@{/}" th:text="#{navigation.home}">Home</a>
+	        <a th:href="@{/view-all}" th:text="#{navigation.viewalljobs}">View All Jobs</a>
+			<a th:href="@{/add-job}" th:text="#{navigation.newjob}">Add A Job</a>
+		    <a th:href="@{/bid-for-job}" th:text="#{navigation.bidforjobs}">Bid For Jobs</a>
+		    
+			<span sec:authorize="!isAuthenticated()">
+				<a th:href="@{/register}" th:text="#{navigation.register}">Register</a>
+				<a th:href="@{/login}" id="loginbutton" th:text="#{navigation.login}">Login Default</a>
+			</span>
+			<span sec:authorize="isAuthenticated()">
+				<span sec:authentication="name">No Name</span>
+				<a th:href="@{/logout}" id="logoutbutton" th:text="#{navigation.logout}">Logout Default</a>
+			</span>
+	    </nav>
+	    <h1>
+			<span th:text="#{fragment.pagename}">Job Auction Pages</span>
+		</h1>
+    </div>
+  
+
+    <div th:fragment="footer">
+	 	<span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">
+    		<a th:href="@{${currentUrl}(lang=cz)}"><i class="flag-icon flag-icon-cz"></i></a>
+		</span>
+ 		<!-- <span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">
+    		<a th:href="@{${currentUrl}(lang=fr)}"><i class="flag-icon flag-icon-fr"></i></a>
+		</span> -->
+		<!--  adapted from https://stackoverflow.com/questions/27623405/thymeleaf-add-parameter-to-current-url -->
+		<span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">
+    		<a th:href="@{${currentUrl}(lang=gb)}"><i class="flag-icon flag-icon-gb"></i></a>
+		</span> 
+	</div>
+	
+    
+</body>
+</html>

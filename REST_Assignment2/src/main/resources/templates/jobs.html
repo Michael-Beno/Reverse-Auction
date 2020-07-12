@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+		
+<head>
+  	<link rel="stylesheet" th:href="@{mystyles.css}" type="text/css" />
+	<meta charset="UTF-8">
+<title>REST consumer</title>
+</head>
+<body>
+<h2>All Jobs REST Consumer</h2>
+<table>
+		<tr>
+			<th>ID</th>
+			<th>Job Name</th>
+			<th>Job Description</th>
+			<th>Best Bid</th>
+			<th>Winner</th>
+			<th>First published date</th>
+			<th>Offered By Name</th>
+			<th>Offered By Email</th>
+			<th>Offered By Phone</th>
+			<th>days to end</th>
+		</tr>
+	 	<tr th:each="job,iterationCount : ${jobs}" th:class="${iterationCount.even}? 'even'" th:object="${job}"	>			
+			
+			<td th:text="*{jobId}"> </td>
+			<td> <a th:text="*{jobName}" th:href="@{bid/} + *{jobId}"></a></td>
+			<td th:text="*{jobDescription}"> </td>
+			<td th:text="*{jobBestOffer}"> </td>
+			<td th:text="*{jobBestBidder}"> </td>
+			<td th:text="*{jobPublished}"> </td>
+			<!-- <td th:text="*{jobValidTo}"> </td> -->
+			<td th:text="${job.addedBy.userName}"> </td>
+			<td th:text="${job.addedBy.userEmail}"> </td>
+			<td th:text="${job.addedBy.userPhone}"> </td>
+			<td> 
+				 <span th:if="${job.jobDaysLeft > 0}">
+				 	<span th:text="*{jobDaysLeft}"></span>
+				 </span>
+  			     <span th:unless="${job.jobDaysLeft > 0}">
+  			     	ENDED
+  			     </span>
+			</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<div th:insert="fragments.html :: head"></div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu">
+		</div>		
+		
+	</header>
+	<main>
+		<h2>
+			<span th:text="#{bid.placeYourBid}">PLACE YOUR BID</span>
+			<span th:text="${name}"></span>
+		</h2>
+		<p th:text="*{jobs.jobName}">job name </p>
+		<p th:text="*{jobs.jobDescription}">job description </p>
+<!-- 		<p th:text="*{jobs.jobId}">job Id </p>
+		<p th:text="*{addedBy}">added by </p>
+		<p th:text="*{loggedId}">logged id </p> -->
+		<h2><span th:text="#{bid.bidders}">Bidders</span></h2>
+	<table>
+		<tr>
+			<td><span th:text="#{bid.bidder}">bidder</span></td>
+			<td><span th:text="#{bid.offers}">offers</span></td>
+	
+	 	<tr th:each="bid,iterationCount : ${bids}" th:class="${iterationCount.even}? 'even'" th:object="${bid}">			
+			<td th:text="${bid.addedBy.userName}"> </td>
+			<td th:text="*{bidPrice}"> </td>
+		</tr>
+	</table>
+		
+		<!-- <span  th:if="${#fields.hasErrors('${addBidForm.lowestBid}')}" 
+		                         th:errors="${addBidForm.lowestBid}" >Error</span>
+ -->		<div class="div-form">
+			<div th:if="${jobs.jobDaysLeft > 0}">
+				 	<h3 th:if="${maximumBid >= 0}" >Maximum: <span th:text="*{maximumBid}"></span></h3>
+				 <!-- <form class="addBidFormorm" method="post" th:action="@{bid/} + *{job.jobId}"> -->
+				<h3 th:if="${addedBy == loggedId }" th:text="#{bid.JobWasAddedByYou}">This job was added by you</h3>
+				<div th:if="${addedBy != loggedId }">
+				
+					<form class="addBidForm" th:object="${addBidForm}" method="post" th:action="@{/bid}"> 
+						<label class="log-label"><span th:text="#{bid.enterLowestBid}">Enter A Lowest Bid</span>
+						<input type="number" name="lowestBid" th:field="*{lowestBid}" min=0 required/></label>
+						<!-- <input type="hidden" name="jobs" th:value="${jobs}" th:field="*{jobs}" /> -->
+						<input type="hidden" name="jobID" th:value="${jobs.jobId}" />
+						<input type="hidden" name="maximumBid" th:value="${maximumBid}"/>
+					    <input  id="login" type="submit" th:value="#{bid.placeBid}" />
+					</form>
+				
+				</div>
+			</div>
+  			<h3 th:unless="${jobs.jobDaysLeft > 0}" th:text="#{bid.jobEnded}">ENDED</h3>
+			
+			<a id="button-back"  th:href="@{/view-all}">
+				<button th:text="#{view.backToViewAllJobs}">Back to view all jobs</button>
+			</a>
+		</div>
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>

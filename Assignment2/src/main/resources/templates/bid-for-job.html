@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<div th:insert="fragments.html :: head"></div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu">
+		</div>		
+		
+	</header>
+	<main>
+		<h2>
+			<span th:text="#{navigation.bidforjobs}">Bid For Jobs</span>
+		</h2>
+		<table>
+		<tr>
+			<th th:text="ID">ID</th>
+			<th th:text="#{view.action}">action</th>
+			<th th:text="#{addjob.jobName}">Job Name</th>
+			<th th:text="#{addjob.jobDescription}">Job Description</th>
+			<th th:text="#{view.jobBestBit}">Best Bid</th>
+			<th th:text="#{view.jobWinner}">Winner</th>
+			<th th:text="#{view.jobFirstPublished}">First published date</th>
+			<th th:text="#{view.jobPublishedBy}">Published By</th>
+			<th th:text="#{view.daysToEnd}">days to end</th>
+		</tr>
+	
+	 	<tr th:each="job,iterationCount : ${jobs}" th:class="${iterationCount.even}? 'even'" th:object="${job}" th:if="${job.jobDaysLeft > 0}">			
+		<span th:if="${job.addedBy.userEmail != email }">
+			<td th:text="*{jobId}"> </td>
+			<td> 
+				<!-- <td><a th:text="*{countyName}" th:href="@{county/} + *{countyId}">County</a></td> -->
+				 <span th:if="${job.jobDaysLeft > 0}"><a th:text="#{view.viewJob}" th:href="@{bid/} + *{jobId}">VIEW JOB</a></span>
+  			     <span th:unless="${job.jobDaysLeft > 0}"><a th:text="#{view.listBfDids}" th:href="@{bid/} + *{jobId}">LIST OF BIDS</a></span>
+			</td>
+			<td th:text="*{jobName}"> </td>
+			<td th:text="*{jobDescription}"> </td>
+			<td th:text="*{jobBestOffer}"> </td>
+			<td th:text="*{jobBestBidder}"> </td>
+			<td th:text="*{jobPublished}"> </td>
+			<td th:text="${job.addedBy.userName}"> </td>
+			<!-- <td th:text="*{jobIsOpen} ? 'ACTIVE' : 'ENDED'"></td> -->
+			<td> 
+				 <span th:if="${job.jobDaysLeft > 0}">
+				 	<span th:text="*{jobDaysLeft}"></span>
+				 </span>
+  			     <span th:unless="${job.jobDaysLeft > 0}">ENDED</span>
+			</td>
+		</span>
+			<!-- <td th:text="*{addedById}"> </td> -->
+		</tr>
+	</table>
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>

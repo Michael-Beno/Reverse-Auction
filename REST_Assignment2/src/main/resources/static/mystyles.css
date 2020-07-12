@@ -1,0 +1,152 @@
+
+h2{
+	#font-size: 0.5em;
+	color: green;
+}
+
+/* div{
+	margin-left: 10%;
+ 	margin-right: 30%;
+ 	padding-top:50px;
+ 	padding-bottom:50px;
+ 	text-align: center;
+ 	background-color: #f2f2f2;
+ 	width: 580px;
+}
+ */
+label{
+	display:block;
+	margin-top:20px;
+	padding:30%;
+	font-size: 20px;
+	color: blue;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+
+form label { 
+	display: block;  /* block float the labels to left column, set a width */
+	float: left; 
+	width: 150px; 
+	padding: 0; 
+	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
+	text-align: right; 
+	margin-top: 25px;
+}
+
+input {
+	margin-top: 20px;
+	margin-left:20px;
+	righ: 10%;
+	#padding-left: 20%;
+	width:50%;
+	text-align: left;
+}
+
+input.reset{
+	font-weight: bolder;
+	background-color: #ff9999;
+	padding: 10px 30px 10px 30px;
+	text-align:center;
+	width:120px;
+}
+input.submit{
+	font-weight: bolder;
+	background-color: #ccff99;
+	padding: 10px 30px 10px 30px;
+	text-align:center;
+	width:120px;
+}
+input#login{
+	font-weight: bolder;
+	background-color: #ccff99;
+	margin-left:40px;
+	width:120px;
+	text-align:center;
+	padding: 10px 30px 10px 30px;
+}
+p.error{
+	font-size: .8em;
+	color: red;
+	text-align:right;
+	font-weight:bold;
+	padding-right: 10%;
+	
+}
+
+header nav, header h1, header h3{
+	display:inline-block;
+}
+
+main{
+  min-height: 25em;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f0f0f0;
+  width: 80%;
+  padding: 45px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  text-align:center;
+}
+
+main table{
+	margin: 0 auto;
+}
+
+
+
+header nav{
+	float:right;
+}
+
+header nav a{
+  display: inline-block;
+  text-align:center;
+  text-transform: uppercase;
+  text-decoration: none; 	
+  outline: 0;
+  background-color: #0000ff;
+  border: 0;
+  padding: 5px 15px;
+  color: #FFFFFF;
+  font-size: 0.8em;
+  -webkit-transition: background-color 1s ease;
+  transition: background-color 1s ease;
+  cursor: pointer;	
+}
+
+header nav a:hover{
+	background-color: #8000ff;
+}
+
+#loginbutton{
+	background: #008000;
+}
+#logoutbutton{
+	background: grey;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+th{background: #729fcf}
+tr:nth-child(odd) {background: #d3d7cf}
+tr:nth-child(even) {background: #f2f1bc}
+
+.div-form{
+	max-width: 700px;
+	padding-left: 15%;
+	padding-right: 15%;
+}
+
+.log-label {
+	width:80%;
+
+}
+
