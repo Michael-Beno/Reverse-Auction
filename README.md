@@ -8,7 +8,3 @@ This repository contains two projects:
 [Requirements in PDF.](https://github.com/Michael-Beno/Reverse-Auction/blob/master/doc/Project2.pdf) 2019-Y4-S1-A2<br>
 
 <b>Spring Boot Spring Security H2 HTML5 Thymeleaf JPA Hibernate Maven</b>
-
-### Solution
-
-[**Solution in PDF**](https://github.com/Michael-Beno/Reverse-Auction/blob/master/doc/Michael_Beno_Report.pdf)
