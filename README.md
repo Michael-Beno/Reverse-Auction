@@ -5,10 +5,10 @@ This repository contains two projects:
 * Two REST API endpoints to return the following data in JSON format to authorised users<br>
         ◦ List all currently active jobs <br> 
         ◦ List the bids made by a user, given an id <br>
-[Requirements in PDF.](https://strategix.myqnapcloud.com/images/reverse-auction/requirements.pdf) 2019-Y4-S1-A2<br>
+[Requirements in PDF.](https://github.com/Michael-Beno/Reverse-Auction/blob/master/doc/Project2.pdf) 2019-Y4-S1-A2<br>
 
 <b>Spring Boot Spring Security H2 HTML5 Thymeleaf JPA Hibernate Maven</b>
 
 ### Solution
 
-[**Solution in PDF**](https://strategix.myqnapcloud.com/images/reverse-auction/solution.pdf)
+[**Solution in PDF**](https://github.com/Michael-Beno/Reverse-Auction/blob/master/doc/Michael_Beno_Report.pdf)
